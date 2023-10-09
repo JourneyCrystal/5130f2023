@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Self Introduction</title>
+    <style>
+        /* Add CSS styles for presentation */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        main {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 50%;
+            display: none; /* Initially hide the image */
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+
+        .scrolling-text {
+            white-space: nowrap;
+            overflow: hidden;
+            animation: scrollText 10s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% {
+                transform: translateX(50%);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Jing Bai homepage</h1>
+    </header>
+    <main>
+        <h2>About Me</h2>
+        <p>Hello! My name is Jing Bai. I am a CS student based in UMass.</p>
+        <h2>My Hobbies</h2>
+        <ul>
+            <li style="color: #6610f2;">Cooking</li>
+            <li style="color: #007bff;">Gardening</li>
+        </ul>
+        <!-- Add a dynamic button to toggle the image -->
+        <button id="toggleImageButton">See Picture</button>
+        <img id="myPhoto" src="pic1.jpg" alt="My Photo">
+    </main>
+    <footer>
+        <p class="scrolling-text">Contact me at: <a href="mailto:barcajane@gmail.com">barcajane@gmail.com</a></p>
+    </footer>
+    <script>
+        // JavaScript to toggle the image visibility
+        const toggleImageButton = document.getElementById('toggleImageButton');
+        const myPhoto = document.getElementById('myPhoto');
+
+        let isImageVisible = false;
+
+        toggleImageButton.addEventListener('click', () => {
+            if (isImageVisible) {
+                myPhoto.style.display = 'none'; // Hide the image
+            } else {
+                myPhoto.style.display = 'block'; // Show the image
+            }
+
+            isImageVisible = !isImageVisible; // Toggle the state
+        });
+    </script>
+</body>
+</html>
