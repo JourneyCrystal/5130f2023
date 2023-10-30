@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project proposal</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="chesskid-connect">ChessKid Connect</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li>
+<p><a href="#introduction">Introduction</a></p>
+</li>
+<li>
+<p><a href="#how-to-install-and-run">How to Install and Run</a></p>
+</li>
+<li>
+<p><a href="#technical-design">Technical Design</a></p>
+</li>
+<li>
+<p><a href="#wizard-steps">Wizard Steps</a></p>
+</li>
+</ol>
+<h2 id="introduction">Introduction</h2>
+<p>ChessKid Connect is a web-based tool that helps parents and young chess enthusiasts find compatible chess partners. This project provides a wizard-based interface to collect and store user information, including preferences and a custom message for potential chess partners.</p>
+<h2 id="how-to-install-and-run">How to Install and Run</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Node.js installed on your system. If not installed, download and install it from <a href="https://nodejs.org/">Node.js official website</a>.</li>
+</ul>
+<h3 id="installation">Installation</h3>
+<ol>
+<li>
+<p>Clone the project repository to your local machine</p>
+</li>
+<li>
+<p>Navigate to the project directory:</p>
+</li>
+<li>
+<p>Install the required Node.js modules using npm:</p>
+</li>
+</ol>
+<pre><code>
+npm install
+
+</code></pre>
+<h3 id="running-the-application">Running the Application</h3>
+<ol>
+<li>Start the Node.js server:</li>
+</ol>
+<pre><code>
+node server.js
+
+</code></pre>
+<ol start="2">
+<li>Open your web browser and go to <a href="http://localhost:3000">http://localhost:3000</a> to access the ChessKid Connect wizard.</li>
+</ol>
+<h2 id="technical-design">Technical Design</h2>
+<p>ChessKid Connect is built with the following components and technologies:</p>
+<ul>
+<li>
+<p><strong>Frontend</strong>: HTML, CSS, JavaScript (Vanilla).</p>
+</li>
+<li>
+<p><strong>Backend</strong>: Node.js using Express.js for the server.</p>
+</li>
+<li>
+<p><strong>File Upload</strong>: Multer is used to handle file uploads.</p>
+</li>
+<li>
+<p><strong>Data Storage</strong>: User information is collected and stored in a JSON format.</p>
+</li>
+</ul>
+<h2 id="wizard-steps">Wizard Steps</h2>
+<p>The ChessKid Connect wizard consists of the following steps, each serving a specific purpose for finding a chess partner:</p>
+<ol>
+<li>
+<p><strong>Personal Information</strong>: Collects the user’s first name and last name for personalized introductions to potential chess partners.</p>
+</li>
+<li>
+<p><strong>Contact Information</strong>: Gathers the user’s email and phone number for communication, ensuring easy contact.</p>
+</li>
+<li>
+<p><strong>Location</strong>: Captures the user’s city and state to help match users with local chess partners, promoting face-to-face gameplay.</p>
+</li>
+<li>
+<p><strong>Kid’s Information</strong>: Gathers information about the user’s kid, including age and years of playing chess, to find compatible partners.</p>
+</li>
+<li>
+<p><strong>Preferences</strong>: Asks for the preferred contact method (email, phone, or both) and game preference (online, same-town, or both), helping to filter and match partners more accurately.</p>
+</li>
+<li>
+<p><strong>Play Style</strong>: Collects information about the user’s preferred chess play style (recreational, competitive, or casual) to align users with similar play styles.</p>
+</li>
+<li>
+<p><strong>Custom Message</strong>: Provides an optional field for the user to enter a custom message for potential chess partners, allowing users to communicate special preferences or interests.</p>
+</li>
+<li>
+<p><strong>Submit</strong>: The final step where the user can review their information before submitting the form, ensuring accuracy and completeness.</p>
+</li>
+</ol>
+<p>Each step in the wizard is designed to gather specific information to improve the accuracy of matching chess partners, enhance user experience, and promote meaningful connections.</p>
+</div>
+</body>
+
+</html>

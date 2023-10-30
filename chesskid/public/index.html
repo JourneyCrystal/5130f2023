@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChessKid Connect</title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Page background color */
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header styles */
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        /* Container for the wizard */
+        #wizard-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        /* Style for steps */
+        div[id^="step"] {
+            display: none;
+        }
+
+        /* Exception to display the first step */
+        #step1 {
+            display: block;
+        }
+
+        /* Style for the buttons */
+        button {
+            background-color: #0074d9;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style for the input fields */
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Style for the submit button */
+        button[type="submit"] {
+            background-color: #4CAF50;
+            margin-top: 20px;
+        }
+
+        /* Additional styling for form labels */
+        label {
+            font-weight: bold;
+        }
+
+        /* Styling for the page footer */
+        #footer {
+            text-align: center;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        /* Progress bar styles */
+        #progress-bar {
+            margin-top: 20px;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        #progress-bar-inner {
+            height: 100%;
+            width: 0;
+            background-color: #0074d9;
+            border-radius: 5px;
+            position: absolute;
+        }
+
+        /* Tip container */
+        #tip-container {
+            text-align: center;
+            margin-top: 10px;
+            color: #666;
+        }
+
+        .info-icon {
+            cursor: pointer;
+            font-size: 20px;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        /* Tip container style */
+        #tip-container {
+            display: none;
+            margin-top: 5px;
+            color: #666;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to ChessKid Connect</h1>
+    <p>Let's get started with your profile:</p>
+
+    <div id="wizard-container">
+        <div id="step1">
+            <h2>Step 1: Personal Information</h2>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" placeholder="First Name" required>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" placeholder="Last Name" required>
+            <button onclick="nextStep(2)">Next</button>
+        </div>
+
+        <div id="step2">
+            <h2>Step 2: Contact Information</h2>
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Email" required>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" placeholder="Phone" required>
+            <button onclick="nextStep(3)">Next</button>
+        </div>
+
+        <div id="step3">
+            <h2>Step 3: Location</h2>
+            <label for="city">City:</label>
+            <input type="text" id="city" placeholder="City" required>
+            <label for="state">State:</label>
+            <input type="text" id="state" placeholder="State" required>
+            <button onclick="nextStep(4)">Next</button>
+        </div>
+
+        <div id="step4">
+            <h2>Step 4: Kid's Information</h2>
+            <label for="age">Kid's Age:</label>
+            <input type="number" id="age" placeholder="Kid's Age" required>
+            <label for="yearsOfChess">Years of Playing Chess:</label>
+            <input type="number" id="yearsOfChess" placeholder="Years of Playing Chess" required>
+            <button onclick="nextStep(5)">Next</button>
+        </div>
+
+        <div id="step5">
+            <h2>Step 5: Preferences</h2>
+            <label for="contactMethod">Preferred Contact Method:</label>
+            <select id="contactMethod">
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+                <option value="both">Both</option>
+            </select>
+            <br>
+            <label for="gamePreference">Game Preference:</label>
+            <select id="gamePreference">
+                <option value="online">Online Games</option>
+                <option value="sameTown">Games in Same Town</option>
+                <option value="both">Both</option>
+            </select>
+            <button onclick="nextStep(6)">Next</button>
+        </div>
+
+        <div id="step6">
+            <h2>Step 6: Play Style</h2>
+            <label for="playStyle">Chess Play Style:</label>
+            <select id="playStyle">
+                <option value="recreational">Recreational</option>
+                <option value="competitive">Competitive</option>
+                <option value="casual">Casual</option>
+            </select>
+            <button onclick="nextStep(7)">Next</button>
+        </div>
+
+        <div id="step7">
+            <h2>Step 7: Custom Message</h2>
+
+            <!-- Info icon for the tip -->
+            <span class="info-icon" onmouseover="showTip()" onmouseout="hideTip()">❓</span>
+
+            <!-- Custom message input and tip container -->
+            <label for="customMessage">Custom Message:</label>
+            <textarea id="customMessage" placeholder="Your custom message"></textarea>
+            <div id="tip-container" style="display: none;">Extra information you can share with potential chess partners.</div>
+            <button type="submit" onclick="submitForm()">Submit</button>
+        </div>
+    </div>
+
+    <!-- Progress bar and tip container -->
+    <div id="progress-bar">
+        <div id="progress-bar-inner"></div>
+    </div>
+    <div id="tip-container">
+        <p id="progress-tip">We are almost done</p>
+    </div>
+
+    <div id="footer">
+        &copy; 2023 ChessKid Connect
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let formData = {};
+
+        function updateProgressBar() {
+            const progressBar = document.getElementById("progress-bar-inner");
+            const totalSteps = 7; // Update this with the total number of steps
+            const percentComplete = (currentStep / totalSteps) * 100;
+            progressBar.style.width = percentComplete + "%";
+        }
+
+        function updateProgressTip() {
+            const progressTip = document.getElementById("progress-tip");
+            const tips = ["Just a few more steps to go!", "Almost there!", "We're almost done."];
+            const tipIndex = Math.floor(Math.random() * tips.length);
+            progressTip.textContent = tips[tipIndex];
+        }
+
+        function nextStep(step) {
+            // Collect and store data from the current step
+            if (currentStep === 1) {
+                formData.firstName = document.getElementById("firstName").value;
+                formData.lastName = document.getElementById("lastName").value;
+            } else if (currentStep === 2) {
+                formData.email = document.getElementById("email").value;
+                formData.phone = document.getElementById("phone").value;
+            } else if (currentStep === 3) {
+                formData.city = document.getElementById("city").value;
+                formData.state = document.getElementById("state").value;
+            } else if (currentStep === 4) {
+                formData.age = document.getElementById("age").value;
+                formData.yearsOfChess = document.getElementById("yearsOfChess").value;
+            } else if (currentStep === 5) {
+                formData.contactMethod = document.getElementById("contactMethod").value;
+                formData.gamePreference = document.getElementById("gamePreference").value;
+            } else if (currentStep === 6) {
+                formData.playStyle = document.getElementById("playStyle").value;
+            } // Last step will be collected in SubmitForm
+
+
+            // Hide the current step
+            document.getElementById(`step${currentStep}`).style.display = "none";
+
+            // Show the next step
+            currentStep = step;
+            document.getElementById(`step${currentStep}`).style.display = "block";
+
+            // Update progress bar and tip
+            updateProgressBar();
+            updateProgressTip();
+        }
+
+        
+        // Show the tip when hovering over the info icon
+        function showTip() {
+            const tipContainer = document.getElementById("tip-container");
+            tipContainer.style.display = "block";
+        }
+
+        // Hide the tip when moving the mouse away from the info icon
+        function hideTip() {
+            const tipContainer = document.getElementById("tip-container");
+            tipContainer.style.display = "none";
+        }
+
+        function submitForm() {
+            // collect value for last step
+            formData.customMessage = document.getElementById("customMessage").value;
+
+            // Convert formData to JSON
+            const jsonData = JSON.stringify(formData);
+
+            // Create a new XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+
+            // Define the request method, URL, and content type
+            xhr.open("POST", "/submit", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            // Define the response handler
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Redirect to a thank you page
+                    window.location.href = "thankyou.html";
+                } else {
+                    alert("Failed to submit your information.");
+                }
+            };
+
+            // Send the JSON data
+            xhr.send(jsonData);
+        }
+
+        // Initialize progress bar and tip
+        updateProgressBar();
+        updateProgressTip();
+    </script>
+</body>
+</html>
