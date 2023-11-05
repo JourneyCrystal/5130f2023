@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Data - ChessKid Connect</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+    <h1>All Submitted Data</h1>
+    <% if (data.length > 0) { %>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Location</th>
+                    <th>Kid's Age</th>
+                    <th>Chess Level</th>
+                    <th>Contact Method</th>
+                    <th>Game Platform</th>
+                    <th>Game Style</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(function(entry) { %>
+                    <tr>
+                        <td><%= entry._id %></td> <!-- Assuming MongoDB _id or similar identifier -->
+                        <td><%= entry.name %></td>
+                        <td><%= entry.email %></td>
+                        <td><%= entry.phoneNumber %></td>
+                        <td><%= entry.location %></td>
+                        <td><%= entry.age %></td>
+                        <td><%= entry.chessLevel %></td>
+                        <td><%= entry.contactMethod %></td>
+                        <td><%= entry.gamePlatform %></td>
+                        <td><%= entry.gameStyle %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>No data available.</p>
+    <% } %>
+</body>
+</html>

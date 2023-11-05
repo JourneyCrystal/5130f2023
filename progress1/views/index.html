@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChessKid Connect</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <script src="/wizard.js" defer></script>
+</head>
+<body>
+    <div class="progress-bar">
+        <div id="progress"></div>
+    </div>
+    <div class="wizard">
+        <form id="wizardForm" action="/wizard-step" method="POST">
+            <div class="step active" data-step="1">
+                <label for="name">Enter your name:</label>
+                <input type="text" id="name" name="name" required>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+            <div class="step" data-step="2">
+                <label for="email">Enter your email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="phoneNumber">Enter your phone number:</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+            <div class="step" data-step="3">
+                <label for="location">Enter your location:</label>
+                <input type="text" id="location" name="location" required>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+            <div class="step" data-step="4">
+                <label for="age">Enter your kid's age:</label>
+                <input type="number" id="age" name="age" required>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+            <div class="step" data-step="5">
+                <label for="chessLevel">Select your kid's chess level:</label>
+                <select id="chessLevel" name="chessLevel" required>
+                    <option value="">Please choose...</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+            <div class="step" data-step="6">
+                <label for="contactMethod">Preferred contact method:</label>
+                <select id="contactMethod" name="contactMethod" required>
+                    <option value="">Please choose...</option>
+                    <option value="email">Email</option>
+                    <option value="phone">Phone</option>
+                    <option value="text">Text</option>
+                </select>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+            <div class="step" data-step="7">
+                <label for="gamePlatform">Preferred game platform:</label>
+                <select id="gamePlatform" name="gamePlatform" required>
+                    <option value="">Please choose...</option>
+                    <option value="online">Online</option>
+                    <option value="local">Local</option>
+                </select>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+            <div class="step" data-step="8">
+                <label for="gameStyle">Game style:</label>
+                <select id="gameStyle" name="gameStyle" required>
+                    <option value="">Please choose...</option>
+                    <option value="recreational">Recreational</option>
+                    <option value="competitive">Competitive</option>
+                </select>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project proposal</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="chesskid-connect">ChessKid Connect</h1>
+<p>ChessKid Connect is a web application that simplifies the process of collecting and storing user information. Users can complete a step-by-step wizard, providing essential details such as their name, contact information (email and phone number), location, child’s age, chess level, preferred contact method, game platform (online or local), and game style (recreational or competitive). The collected data is stored in a single-file based database, offering future opportunities for data retrieval and analysis.</p>
+<h2 id="progress-of-this-version">1. Progress of This Version</h2>
+<p>This version improves the project by storing user data in a single-file based database instead of a collection of Jason files. This enhancement enables future query capabilities, allowing the website to retrieve and display stored data based on various criteria.</p>
+<p>This version also adds an “/all-data” view route which provides an overview of all data stored, which can be particularly useful during development and data management.</p>
+<p>Also, validation handler is added to each required field of wizard, so that user must provide values to required fields.</p>
+<h3 id="how-to-set-up-the-environment">2. How to Set Up the Environment</h3>
+<p>To set up the project environment and run the application, follow these steps:</p>
+<ol>
+<li>Clone this repository to your local machine:</li>
+</ol>
+<pre class=" language-shell"><code class="prism  language-shell">
+git clone &lt;git-hub-url&gt;
+
+</code></pre>
+<ol start="2">
+<li>Navigate to the project directory:</li>
+</ol>
+<pre class=" language-shell"><code class="prism  language-shell">
+cd &lt;path&gt;
+
+</code></pre>
+<ol start="3">
+<li>Install the required Node.js packages:</li>
+</ol>
+<pre class=" language-shell"><code class="prism  language-shell">
+npm install
+
+</code></pre>
+<ol start="4">
+<li>Start the application:</li>
+</ol>
+<pre class=" language-shell"><code class="prism  language-shell">
+npm start
+
+</code></pre>
+<ol start="5">
+<li>Access the application in your web browser at <code>http://localhost:3000</code>.</li>
+</ol>
+<h3 id="technologies-used">3. Technologies Used</h3>
+<p>The ChessKid Connect project is built using the following technologies:</p>
+<ul>
+<li>
+<p>Node.js: A JavaScript runtime for server-side development.</p>
+</li>
+<li>
+<p>Express.js: A web application framework for Node.js.</p>
+</li>
+<li>
+<p>HTML and EJS: Used for creating web page templates.</p>
+</li>
+<li>
+<p>CSS: Used for styling the web pages.</p>
+</li>
+<li>
+<p>NeDB: A JavaScript-based embedded database for storing user data.</p>
+</li>
+<li>
+<p>JavaScript: Used for client-side and server-side scripting.</p>
+</li>
+<li>
+<p>npm: The package manager for installing and managing project dependencies.</p>
+</li>
+</ul>
+</div>
+</body>
+
+</html>
