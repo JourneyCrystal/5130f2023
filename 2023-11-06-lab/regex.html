@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Validation</title>
+<script>
+  function validate() {
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var phonePattern = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
+    
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
+    
+    var emailValid = emailPattern.test(email);
+    var phoneValid = phonePattern.test(phone);
+
+    document.getElementById('email-error').textContent = emailValid ? '' : 'Invalid email format';
+    document.getElementById('phone-error').textContent = phoneValid ? '' : 'Invalid phone format';
+
+    return emailValid && phoneValid;
+  }
+</script>
+<style>
+  .error {
+    color: red;
+    font-size: 0.8em;
+    margin-left: 5px;
+  }
+  input, button {
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Contact Validation Form</h1>
+<form onsubmit="return validate()">
+  <label for="email">Email:</label><br>
+  <input type="text" id="email" name="email"><span id="email-error" class="error"></span><br>
+  <label for="phone">US Phone Number (format: XXX-XXX-XXXX):</label><br>
+  <input type="text" id="phone" name="phone"><span id="phone-error" class="error"></span><br>
+  <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
