@@ -3,22 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Validation</title>
+<title>Contact and URL Validation</title>
 <script>
   function validate() {
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var phonePattern = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
+    var urlPattern = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
     
     var email = document.getElementById('email').value;
     var phone = document.getElementById('phone').value;
+    var url = document.getElementById('url').value;
     
     var emailValid = emailPattern.test(email);
     var phoneValid = phonePattern.test(phone);
+    var urlValid = urlPattern.test(url);
 
     document.getElementById('email-error').textContent = emailValid ? '' : 'Invalid email format';
     document.getElementById('phone-error').textContent = phoneValid ? '' : 'Invalid phone format';
+    document.getElementById('url-error').textContent = urlValid ? '' : 'Invalid URL format';
 
-    return emailValid && phoneValid;
+    return emailValid && phoneValid && urlValid;
   }
 </script>
 <style>
@@ -34,12 +38,17 @@
 </head>
 <body>
 
-<h1>Contact Validation Form</h1>
+<h1>Contact and URL Validation Form</h1>
 <form onsubmit="return validate()">
   <label for="email">Email:</label><br>
   <input type="text" id="email" name="email"><span id="email-error" class="error"></span><br>
+  
   <label for="phone">US Phone Number (format: XXX-XXX-XXXX):</label><br>
   <input type="text" id="phone" name="phone"><span id="phone-error" class="error"></span><br>
+  
+  <label for="url">URL:</label><br>
+  <input type="text" id="url" name="url"><span id="url-error" class="error"></span><br>
+  
   <button type="submit">Submit</button>
 </form>
 
