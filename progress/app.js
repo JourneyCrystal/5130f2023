@@ -33,6 +33,7 @@ app.post('/submit-data', (req, res) => {
         contactMethod: req.body.contactMethod,
         gamePlatform: req.body.gamePlatform,
         gameStyle: req.body.gameStyle,
+        isNewData: true, // Add this flag to mark the data as new
     };
 
     // Save user data to the database
@@ -58,9 +59,31 @@ app.get('/all-data', (req, res) => {
     });
 });
 
-// Route for the confirmation page
 app.get('/confirmation', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/confirmation.html'));
+    const { gamePlatform, chessLevel } = req.query; // Get criteria from query parameters
+
+    // Query data from the database based on criteria
+    db.find({ gamePlatform, chessLevel, isNewData: { $ne: true }  }, (err, data) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error occurred while fetching data.');
+        } else {
+            // Sort data by age gap (ascending order)
+            data.sort((a, b) => Math.abs(a.kidAge - b.kidAge));
+
+            res.render('confirmation', { data }); // Render the confirmation page with filtered and sorted data
+
+            const confirmedDataId = req.query.confirmedDataId;
+            // After user confirms data, update the flag to mark it as not new
+            db.update({ _id: confirmedDataId }, { $set: { isNewData: false } }, {}, (err, numReplaced) => {
+                if (err) {
+                    console.error(err);
+                } else {
+                    console.log(`Updated ${numReplaced} document(s)`);
+                }
+            });
+        }
+    });
 });
 
 app.listen(3000, () => {

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation - ChessKid Connect</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+    <h1>Confirmation Page</h1>
+    <h2>Matching Players by Game Platform and Chess Level:</h2>
+    <ul>
+        <% if (data.length > 0) { %>
+            <% data.forEach(function(entry) { %>
+                <li>
+                    <strong>Name:</strong> <%= entry.name %><br>
+                    <strong>Email:</strong> <%= entry.email %><br>
+                    <strong>Phone Number:</strong> <%= entry.phoneNumber %><br>
+                    <!-- Include other fields as needed -->
+                </li>
+            <% }); %>
+        <% } else { %>
+            <p>No matching players found.</p>
+        <% } %>
+    </ul>
+
+    <a href="/all-data">[Development Debug] View All Submitted Data</a>
+</body>
+</html>

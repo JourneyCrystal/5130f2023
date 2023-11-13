@@ -66,7 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 console.log('Data stored in database:', data);
-                window.location.href = '/confirmation';
+                const gamePlatform = document.getElementById('gamePlatform').value;
+                const chessLevel = document.getElementById('chessLevel').value;
+                window.location.href = `/confirmation?gamePlatform=${gamePlatform}&chessLevel=${chessLevel}&confirmedDataId=${data._id}`;
             })
             .catch(error => {
                 console.error('Error storing data:', error);
