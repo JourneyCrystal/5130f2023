@@ -1,0 +1,45 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <script>
+    async function fetchData(url) {
+      try {
+        const response = await fetch(url);
+        return response.json();
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        return null;
+      }
+    }
+
+    async function displayUserData() {
+      // Get the user's IP address
+      const ipData = await fetchData('https://api.ipify.org?format=json');
+      if (!ipData) return;
+      document.getElementById('ipAddress').innerText = 'Your IP: ' + ipData.ip;
+
+      // Use the IP address to get location details (using ip-api.com or similar service)
+      const locationData = await fetchData(`http://ip-api.com/json/${ipData.ip}`);
+      if (!locationData) return;
+
+      // Display local language and currency
+      document.getElementById('language').innerText = 'Local Language: ' + locationData.countryCode; // Replace countryCode with actual language if available
+
+      // Fetch and display weather using a weather API (like OpenWeatherMap)
+      // You'll need an API key for most weather APIs
+      const weatherData = await fetchData(`https://api.openweathermap.org/data/2.5/weather?lat=${locationData.lat}&lon=${locationData.lon}&appid=04d2c2ba79ecc92c87b3c2ae6b67511d&units=metric`);
+      if (weatherData) {
+        document.getElementById('weather').innerText = 'Weather: ' + weatherData.weather[0].main + ', ' + weatherData.main.temp + ' °C';
+      }
+    }
+  </script>
+</head>
+<body onload="displayUserData()">
+  <h1>Dashboard</h1>
+  <p id="ipAddress">Loading IP...</p>
+  <p id="language">Loading Language...</p>
+  <p id="weather">Loading Weather...</p>
+</body>
+</html>
