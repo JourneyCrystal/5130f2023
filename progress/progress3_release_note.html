@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project proposal</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><pre class=" language-markdown"><code class="prism  language-markdown"><span class="token title important"><span class="token punctuation">#</span> ChessKid Connect - Release Note</span>
+
+<span class="token title important"><span class="token punctuation">##</span> Progress 3</span>
+
+<span class="token title important"><span class="token punctuation">###</span> Email Sending Module</span>
+
+<span class="token title important"><span class="token punctuation">####</span> Overview</span>
+
+<span class="token list punctuation">-</span> <span class="token bold"><span class="token punctuation">**</span>NPM Package<span class="token punctuation">**</span></span>: The ChessKid Connect project utilizes the <span class="token code keyword" spellcheck="false">`nodemailer`</span> npm package for email sending functionality. Nodemailer is a widely-used library for sending emails from Node.js applications.
+
+<span class="token title important"><span class="token punctuation">####</span> Setting Up Email Account</span>
+
+<span class="token list punctuation">-</span> To configure the email sending module, you'll need to provide your email account details.
+<span class="token list punctuation">-</span> <span class="token bold"><span class="token punctuation">**</span>Supported Email Services<span class="token punctuation">**</span></span>: The project supports both Gmail and Hotmail accounts for email sending.
+  <span class="token list punctuation">-</span> <span class="token bold"><span class="token punctuation">**</span>Gmail<span class="token punctuation">**</span></span>: If you're using a Gmail account, please ensure that "Less secure apps" is enabled in your Google account settings. Note that using Gmail may require additional security setup.
+  <span class="token list punctuation">-</span> <span class="token bold"><span class="token punctuation">**</span>Hotmail<span class="token punctuation">**</span></span>: Hotmail accounts can be used without any additional security settings.
+
+<span class="token title important"><span class="token punctuation">####</span> Code Configuration</span>
+
+```javascript
+// Email Configuration (emailConfig.js)
+
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+<span class="token code keyword" spellcheck="false">    service: 'Gmail', // Use 'Hotmail' if applicable</span>
+<span class="token code keyword" spellcheck="false">    auth: {</span>
+<span class="token code keyword" spellcheck="false">        user: 'your_email@gmail.com', // Replace with your email address</span>
+<span class="token code keyword" spellcheck="false">        pass: 'your_email_password', // Replace with your email password</span>
+<span class="token code keyword" spellcheck="false">    },</span>
+});
+
+module.exports = transporter;
+</code></pre>
+<h3 id="donation-function">Donation Function</h3>
+<h4 id="overview">Overview</h4>
+<ul>
+<li>The donation function is a feature added to ChessKid Connect for demonstration purposes.</li>
+<li>When users click the “Donate” button, an alert window pops up to show a thank you message. No actual donation processing is performed.</li>
+</ul>
+<h3 id="how-to-install-set-up-environment-and-run-the-project">How to Install, Set Up Environment, and Run the Project</h3>
+<p>Follow these steps to install, set up your environment, and run ChessKid Connect:</p>
+<ol>
+<li>
+<p><strong>Clone the Repository</strong>:</p>
+<pre class=" language-shell"><code class="prism  language-shell">git clone &lt;github_url&gt;
+</code></pre>
+</li>
+<li>
+<p><strong>Navigate to the Project Directory</strong>:</p>
+</li>
+<li>
+<p><strong>Install Dependencies</strong>:</p>
+<pre class=" language-shell"><code class="prism  language-shell">npm install
+</code></pre>
+</li>
+<li>
+<p><strong>Set Up Email Configuration</strong>:</p>
+<ul>
+<li>Open <code>emailConfig.js</code> and provide your email account details (as described in the Email Sending Module section).</li>
+</ul>
+</li>
+<li>
+<p><strong>Start the Application</strong>:</p>
+<pre class=" language-shell"><code class="prism  language-shell">node app.js
+</code></pre>
+</li>
+<li>
+<p><strong>Access the Application</strong>:</p>
+<p>Open your web browser and go to <code>http://localhost:3000</code> to access ChessKid Connect.</p>
+</li>
+</ol>
+</div>
+</body>
+
+</html>

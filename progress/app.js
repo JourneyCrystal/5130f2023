@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const Datastore = require('nedb');
 const path = require('path');
+const transporter = require('./emailConfig');
 
 const app = express();
 app.use(express.json()); // This line is for parsing JSON
@@ -85,6 +86,37 @@ app.get('/confirmation', (req, res) => {
         }
     });
 });
+
+app.get('/send-email-to-users', (req, res) => {
+    // Query the database to get user emails (adjust your database query accordingly)
+    db.find({}, (err, users) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error occurred while fetching user data.');
+        } else {
+            // Send emails to each user
+            users.forEach((user) => {
+                const mailOptions = {
+                    from: 'error-warning@hotmail.com',
+                    to: user.email,
+                    subject: 'ChessKid Connect - Update Your Information',
+                    text: `Hello ${user.name},\n\nAre you still looking for a chess partner on ChessKid Connect? If so, please update your information on our website.\n\nBest regards,\nThe ChessKid Connect Team`,
+                };
+
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        console.error(error);
+                    } else {
+                        console.log('Email sent:', info.response);
+                    }
+                });
+            });
+
+            res.send('Emails sent to all users.');
+        }
+    });
+});
+
 
 app.listen(3000, () => {
     console.log('ChessKid Connect is running on http://localhost:3000');

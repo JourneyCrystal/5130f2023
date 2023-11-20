@@ -133,4 +133,44 @@ button[type="submit"] {
     text-align: center;
 }
 
-  
+/* Add styles for the donation section */
+.donation-section {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.donation-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.donation-section p {
+    font-size: 0.9rem;
+}
+
+.donation-section label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.donation-section input[type="number"] {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.donation-section button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.donation-section button:hover {
+    background-color: #0056b3;
+}
