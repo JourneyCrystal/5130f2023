@@ -7,8 +7,16 @@
     <link rel="stylesheet" type="text/css" href="/styles.css">
 </head>
 <body>
-    <h1>Confirmation Page</h1>
-    <h2>Matching Players by Game Platform and Chess Level:</h2>
+    <!-- Confirmation Section -->
+    <div class="confirmation-section">
+        <h3>Confirmation</h3>
+        <p>Your search results have been filtered by chess level and platform (local or online). Parents can contact potential partners using their preferred contact method.</p>
+    </div>
+    <!-- "What You Can Do Next" Section -->
+    <div class="next-steps-section">
+        <h3>What You Can Do Next</h3>
+        <p>Now that you have your filtered results, feel free to reach out to potential chess partners using their preferred contact method. Connect, play chess, and enjoy!</p>
+    </div>
     <ul>
         <% if (data.length > 0) { %>
             <% data.forEach(function(entry) { %>
@@ -16,6 +24,7 @@
                     <strong>Name:</strong> <%= entry.name %><br>
                     <strong>Email:</strong> <%= entry.email %><br>
                     <strong>Phone Number:</strong> <%= entry.phoneNumber %><br>
+                    <strong>Preferred Contact:</strong> <%= entry.contactMethod %><br>
                     <!-- Include other fields as needed -->
                 </li>
             <% }); %>
