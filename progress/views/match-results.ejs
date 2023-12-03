@@ -1,0 +1,75 @@
+<!-- match-results.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Results</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Additional styles for the match-results page */
+        .match-results-section {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .match-results-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .match-results-section table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .match-results-section th, .match-results-section td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .match-results-section th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .match-results-section th:first-child, .match-results-section td:first-child {
+            border-left: none;
+        }
+
+        .match-results-section th:last-child, .match-results-section td:last-child {
+            border-right: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Match Results</h1>
+
+    <div class="match-results-section">
+        <h3>Match Results</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Player 1</th>
+                    <th>Player 2</th>
+                    <th>Match Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% matchResults.forEach((result) => { %>
+                    <tr>
+                        <td><%= result.user_name %></td>
+                        <td><%= result.matched_user_name %></td>
+                        <td><%= result.match_date.toDateString() %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

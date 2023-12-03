@@ -15,6 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Create a NeDB database for user data
 const db = new Datastore({ filename: 'customer_data.db', autoload: true });
+const match_db = new Datastore({ filename: 'match_result.db', autoload: true });
 
 // Serve the HTML page
 app.get('/', (req, res) => {
@@ -71,7 +72,7 @@ app.get('/confirmation', (req, res) => {
         } else {
             // Sort data by age gap (ascending order)
             data.sort((a, b) => Math.abs(a.kidAge - b.kidAge));
-
+            
             res.render('confirmation', { data }); // Render the confirmation page with filtered and sorted data
 
             const confirmedDataId = req.query.confirmedDataId;
@@ -82,6 +83,23 @@ app.get('/confirmation', (req, res) => {
                 } else {
                     console.log(`Updated ${numReplaced} document(s)`);
                 }
+            });
+
+            data.forEach(function (entry){
+                match_result = {
+                    user_name: req.query.userName,
+                    matched_user_name: entry.name,
+                    match_date: new Date()
+                };
+                console.log(`new match_result data`, match_result)
+                // Save user data to the match result db
+                match_db.insert(match_result, (err, newDoc) => {
+                    if (err) {
+                        console.error(err);
+                    } else {
+                        console.log('Data added to match result db:', newDoc);
+                    }
+                });
             });
         }
     });
@@ -117,6 +135,29 @@ app.get('/send-email-to-users', (req, res) => {
     });
 });
 
+app.get('/match-results', async (req, res) => {
+    try {
+        const matchResults = await new Promise((resolve, reject) => {
+            match_db.find({}, (err, results) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+
+        res.render('match-results', { matchResults });
+    } catch (error) {
+        console.error('Error retrieving match results:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+// Route to display the Developer Portal
+app.get('/developer-portal', (req, res) => {
+    res.render('developer-portal');
+});
 
 app.listen(3000, () => {
     console.log('ChessKid Connect is running on http://localhost:3000');

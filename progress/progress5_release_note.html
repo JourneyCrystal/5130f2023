@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project proposal</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="chesskid-connect---progress-5">ChessKid Connect - Progress 5</h1>
+<h3 id="new-feature-match-result-database-and-developer-portal">New Feature: Match Result Database and Developer Portal</h3>
+<h4 id="overview">Overview</h4>
+<h4 id="recording-match-results">Recording Match Results</h4>
+<ul>
+<li><strong>Purpose</strong>: The recording of all match results serves as a reference point for evaluating the quality of chess matches facilitated by ChessKid Connect.</li>
+<li><strong>Benefit to Developers</strong>: Developers can analyze the data to fine-tune matchmaking algorithms, identify patterns in match outcomes, and make data-driven improvements.</li>
+<li><strong>Benefit to Customers</strong>: Customers can gain confidence in the platform’s matchmaking capabilities, knowing that their matches contribute to valuable data for future enhancements.</li>
+</ul>
+<h4 id="developer-portal">Developer Portal</h4>
+<ul>
+<li><strong>Organizing Debug Pages</strong>: We have reorganized our developer debug pages into a centralized “Developer Portal.”</li>
+<li><strong>Developer Portal</strong>: The Developer Portal provides easy access to essential debug pages for developers and separates them from user-facing pages.</li>
+<li><strong>Links Moved</strong>: The links to the “All User Data,” “All Match Result,” and “Send Email to All Users” pages have been relocated to the Developer Portal.</li>
+</ul>
+<h3 id="how-it-enhances-development">How It Enhances Development</h3>
+<ul>
+<li><strong>Match Result Database</strong>: The match result database empowers our development team to continuously enhance the quality of matches by leveraging real data and insights.</li>
+<li><strong>Developer Portal</strong>: The Developer Portal streamlines the debugging process, making it easier for developers to access essential tools and data while keeping user and developer pages separate for clarity.</li>
+</ul>
+<h3 id="how-to-set-up-and-run-the-project-locally-with-node.js">How to Set Up and Run the Project Locally with Node.js</h3>
+<p>To set up and run the ChessKid Connect project locally, follow these steps:</p>
+<ol>
+<li><strong>Clone the Repository</strong>:</li>
+</ol>
+<pre class=" language-shell"><code class="prism  language-shell">
+git clone &lt;url&gt;
+
+</code></pre>
+<ol start="2">
+<li><strong>Navigate to the Project Directory</strong>:</li>
+</ol>
+<pre class=" language-shell"><code class="prism  language-shell">
+cd ChessKid-Connect
+
+</code></pre>
+<ol start="3">
+<li><strong>Install Dependencies</strong>:</li>
+</ol>
+<pre class=" language-shell"><code class="prism  language-shell">
+npm install
+
+</code></pre>
+<ol start="4">
+<li><strong>Set Up Email Configuration</strong>:</li>
+</ol>
+<ul>
+<li>Open <code>emailConfig.js</code> and provide your email account details (as described in the Email Sending Module section of this release note).</li>
+</ul>
+<ol start="5">
+<li><strong>Start the Application</strong>:</li>
+</ol>
+<pre class=" language-shell"><code class="prism  language-shell">
+node app.js
+
+</code></pre>
+<ol start="6">
+<li><strong>Access the Application Locally</strong>:</li>
+</ol>
+<p>Open your web browser and go to <code>http://localhost:3000</code> to access ChessKid Connect.</p>
+</div>
+</body>
+
+</html>
